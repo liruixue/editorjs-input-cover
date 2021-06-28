@@ -1,5 +1,5 @@
 {
-  "name": "editorjs-inline-image",
+  "name": "editorjs-inline-cover",
   "version": "0.1.3",
   "keywords": [
     "tool",
@@ -18,8 +18,8 @@
     "test": "jest"
   },
   "author": {
-    "name": "kommit",
-    "email": "info@kommit.co"
+    "name": "royli",
+    "email": "80373717@qq.com"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

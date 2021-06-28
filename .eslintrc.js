@@ -3,6 +3,7 @@ module.exports = {
   plugins: ['jest'],
   rules: {
     'class-methods-use-this': ['off'],
+    'linebreak-style': [0, 'error', 'windows'],
     'no-underscore-dangle': ['error', { allowAfterThis: true }],
   },
   globals: {

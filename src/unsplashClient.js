@@ -5,7 +5,7 @@ import axios from 'axios';
  */
 export default class UnsplashClient {
   constructor(config) {
-    this.apiUrl = config && config.apiUrl ? config.apiUrl : 'https://api.unsplash.com';
+    this.apiUrl = config && config.apiUrl ? config.apiUrl : 'http://api.chartsup.com/api/book';
     this.clientId = config && config.clientId ? config.clientId : '';
     this.perPage = config && config.maxResults ? config.maxResults : 30;
   }
@@ -18,24 +18,18 @@ export default class UnsplashClient {
    * @returns {void}
    */
   searchImages(query, callback) {
-    axios.get(`${this.apiUrl}/search/photos`, {
+    axios.get(`${this.apiUrl}/suggestion`, {
       params: {
-        client_id: this.clientId,
         query,
-        per_page: this.perPage,
       },
     })
-      .then((response) => callback(this.parseResponse(response.data)))
+      .then((response) => {
+        const results = response.data;
+        return callback(results.map((image) => this.buildImageObject(image)));
+      })
       .catch(() => callback([]));
   }
 
-  /**
-   * Parses Unsplash API response
-   * @param {{results: string}} results Array of images from Unsplash
-   */
-  parseResponse({ results }) {
-    return results.map((image) => this.buildImageObject(image));
-  }
 
   /**
    * Builds an image object
@@ -45,11 +39,11 @@ export default class UnsplashClient {
    */
   buildImageObject(image) {
     return {
-      url: image.urls.full,
-      thumb: image.urls.thumb,
-      downloadLocation: image.links.download_location,
-      author: image.user.name,
-      profileLink: image.user.links.html,
+      url: image.coverImgURL,
+      thumb: image.thumbImgURL,
+      downloadLocation: image.coverImgURL,
+      title: image.bookTitle,
+      profileLink: image.bookTitle,
     };
   }
 

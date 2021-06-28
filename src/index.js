@@ -15,8 +15,8 @@ import toolboxIcon from '../assets/toolboxIcon.svg';
  * @property {boolean} withBackground - should image be rendered with background
  * @property {boolean} stretched - should image be stretched to full width of container
  * @property {object} unsplash - Unsplash image information
- *  - author: Unsplash image author name
- *  - profileLink: Author profile link
+ *  - title: Unsplash image title name
+ *  - profileLink: title profile link
  */
 export default class InlineImage {
   /**

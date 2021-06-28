@@ -34,39 +34,35 @@ export const isUrl = (url) => {
 };
 
 /**
- * Creates an element with the Unsplash image author information
+ * Creates an element with the Unsplash image title information
  *
- * @param {{appName: string, authorName: string, authorProfileLink: string}}
+ * @param {{appName: string, title: string, titleProfileLink: string}}
  *  appName - Application name registered on Unsplash
- *  authorName - Image author name
- *  authorProfileLink - Unsplash author profile link object
+ *  title - Image title name
+ *  titleProfileLink - Unsplash title profile link object
  *
  * @returns {HTMLDivElement}
  */
-export const createImageCredits = ({ appName, author, profileLink }) => {
+export const createImageCredits = ({ appName, title, profileLink }) => {
   const wrapper = make('div', 'inline-image__image-credits');
-  const by = make('div', null, {
-    innerHTML: 'by ',
-    style: 'display: inline;',
-  });
-  const authorProfileLink = make('a', '', {
+  // const by = make('div', null, {
+  //   innerHTML: 'by ',
+  //   style: 'display: inline;',
+  // });
+  const titleProfileLink = make('a', '', {
     href: `${profileLink}?utm_source=${appName}&utm_medium=referral`,
-    innerHTML: author,
+    innerHTML: title,
     target: '_blank',
   });
-  const on = make('div', null, {
-    innerHTML: ' on ',
-    style: 'display: inline;',
-  });
-  const unsplashLink = make('a', '', {
-    href: `https://unsplash.com/?utm_source=${appName}&utm_medium=referral`,
-    innerHTML: 'Unsplash',
-    target: '_blank',
-  });
+  // const unsplashLink = make('a', '', {
+  //   href: `https://unsplash.com/?utm_source=${appName}&utm_medium=referral`,
+  //   innerHTML: 'Unsplash',
+  //   target: '_blank',
+  // });
 
-  wrapper.appendChild(by);
-  wrapper.appendChild(authorProfileLink);
-  wrapper.appendChild(on);
-  wrapper.appendChild(unsplashLink);
+  // wrapper.appendChild(by);
+  wrapper.appendChild(titleProfileLink);
+  // wrapper.appendChild(on);
+  // wrapper.appendChild(unsplashLink);
   return wrapper;
 };

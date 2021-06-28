@@ -129,7 +129,7 @@ export default class Ui {
    */
   buildImageCredits(imageData) {
     const unsplashData = imageData.unsplash;
-    if (unsplashData && unsplashData.author && unsplashData.profileLink) {
+    if (unsplashData && unsplashData.title && unsplashData.profileLink) {
       const { appName } = this.config.unsplash;
       const credits = createImageCredits({ ...unsplashData, appName });
       this.nodes.imageHolder.appendChild(credits);

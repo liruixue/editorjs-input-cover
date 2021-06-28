@@ -223,6 +223,8 @@ export default class ControlPanel {
    */
   appendImagesToGallery(results) {
     this.nodes.imageGallery.innerHTML = '';
+    console.log('the gallery results content');
+    console.log(results);
     if (results && results.length) {
       this.nodes.unsplashPanel.classList.add(this.cssClasses.scroll);
       results.forEach((image) => {
@@ -262,21 +264,21 @@ export default class ControlPanel {
    * Handler for embedding Unsplash images.
    * Issues a request to Unsplash API
    *
-   * @param {{url: string, author: string, profileLink: string, downloadLocation: string}}
+   * @param {{url: string, title: string, profileLink: string, downloadLocation: string}}
    *  url - Image url
-   *  author - Unsplash image author name
-   *  profileLink - Unsplash author profile link
+   *  title - Unsplash image title name
+   *  profileLink - Unsplash title profile link
    *  downloadLocation - Unsplash endpoint for image download
    *
    * @returns {void}
    */
   downloadUnsplashImage({
-    url, author, profileLink, downloadLocation,
+    url, title, profileLink, downloadLocation,
   }) {
     this.onSelectImage({
       url,
       unsplash: {
-        author,
+        title,
         profileLink,
       },
     });
