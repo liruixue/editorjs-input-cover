@@ -36,23 +36,21 @@ export const isUrl = (url) => {
 /**
  * Creates an element with the Unsplash image title information
  *
- * @param {{appName: string, title: string, titleProfileLink: string}}
+ * @param {{title: string}}
  *  appName - Application name registered on Unsplash
  *  title - Image title name
  *  titleProfileLink - Unsplash title profile link object
  *
  * @returns {HTMLDivElement}
  */
-export const createImageCredits = ({ appName, title, profileLink }) => {
+export const createImageCredits = ({ title }) => {
   const wrapper = make('div', 'inline-image__image-credits');
   // const by = make('div', null, {
   //   innerHTML: 'by ',
   //   style: 'display: inline;',
   // });
-  const titleProfileLink = make('a', '', {
-    href: `${profileLink}?utm_source=${appName}&utm_medium=referral`,
+  const titleProfileLink = make('span', '', {
     innerHTML: title,
-    target: '_blank',
   });
   // const unsplashLink = make('a', '', {
   //   href: `https://unsplash.com/?utm_source=${appName}&utm_medium=referral`,

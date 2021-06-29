@@ -1,4 +1,4 @@
-import { make, createImageCredits } from './helpers';
+import { make } from './helpers';
 import Tunes from './tunes';
 import ControlPanel from './controlPanel';
 import bgIcon from '../assets/backgroundIcon.svg';
@@ -102,10 +102,11 @@ export default class Ui {
     caption.dataset.placeholder = 'Enter a caption';
 
     if (data.url) {
+      // 有图片链接的情况下，则直接显示可以被加载的图片信息.
       wrapper.appendChild(loader);
       image.src = data.url;
-      this.buildImageCredits(data);
     } else {
+      // 数据为空的情况下，则会让用户进行选择然后创建数据信息.
       const controlPanelWrapper = this.controlPanel.render();
       this.nodes.controlPanelWrapper = controlPanelWrapper;
       wrapper.appendChild(controlPanelWrapper);
@@ -121,21 +122,6 @@ export default class Ui {
     return wrapper;
   }
 
-  /**
-   * Builds Unsplash image credits element
-   *
-   * @param {Object} imageData Tool data
-   * @returns {HTMLDivElement}
-   */
-  buildImageCredits(imageData) {
-    const unsplashData = imageData.unsplash;
-    if (unsplashData && unsplashData.title && unsplashData.profileLink) {
-      const { appName } = this.config.unsplash;
-      const credits = createImageCredits({ ...unsplashData, appName });
-      this.nodes.imageHolder.appendChild(credits);
-      this.nodes.credits = credits;
-    }
-  }
 
   /**
    * On image load callback
@@ -208,7 +194,6 @@ export default class Ui {
   selectImage(data) {
     this.onAddImageData(data);
     this.showLoader();
-    this.buildImageCredits(data);
   }
 
   /**

@@ -125,7 +125,7 @@ describe('ControlPanel', () => {
         expect(onSelectImage).toHaveBeenCalledWith(expect.objectContaining({
           unsplash: {
             author: imageData.author,
-            profileLink: imageData.profileLink,
+            fullTitle: imageData.fullTitle,
           },
           url: imageData.url,
         }));

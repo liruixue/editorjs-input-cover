@@ -116,7 +116,7 @@
   object-fit: cover;
   width: 100;
   height: 144px;
-  padding: 5px;
+  padding: 10px;
   object-position: center 0%;
   cursor: pointer;
 }
@@ -128,8 +128,8 @@
   color: gray;
 }
 
-.inline-image__image-credits a {
-  color: gray;
+.inline-image__image-credits span {
+  color: #0b355f;
 }
 
 .inline-image__search {

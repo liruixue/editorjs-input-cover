@@ -68,7 +68,7 @@ export default class ControlPanel {
       onclick: () => this.showEmbedUrlPanel(),
     });
     const unsplashTab = make('div', [this.cssClasses.tab, this.showEmbedTab ? null : this.cssClasses.active], {
-      innerHTML: 'Unsplash',
+      innerHTML: '封面选择',
       onclick: () => this.showUnsplashPanel(),
     });
 
@@ -252,9 +252,7 @@ export default class ControlPanel {
       onclick: () => this.downloadUnsplashImage(image),
     });
 
-    const { appName } = this.config.unsplash;
-    const imageCredits = createImageCredits({ ...image, appName });
-
+    const imageCredits = createImageCredits({ ...image });
     imgWrapper.appendChild(img);
     imgWrapper.appendChild(imageCredits);
     this.nodes.imageGallery.append(imgWrapper);
@@ -264,22 +262,22 @@ export default class ControlPanel {
    * Handler for embedding Unsplash images.
    * Issues a request to Unsplash API
    *
-   * @param {{url: string, title: string, profileLink: string, downloadLocation: string}}
+   * @param {{url: string, title: string, fullTitle: string, downloadLocation: string}}
    *  url - Image url
    *  title - Unsplash image title name
-   *  profileLink - Unsplash title profile link
+   *  fullTitle - Unsplash title profile link
    *  downloadLocation - Unsplash endpoint for image download
    *
    * @returns {void}
    */
   downloadUnsplashImage({
-    url, title, profileLink, downloadLocation,
+    url, title, fullTitle, downloadLocation,
   }) {
     this.onSelectImage({
       url,
       unsplash: {
         title,
-        profileLink,
+        fullTitle,
       },
     });
     this.unsplashClient.downloadImage(downloadLocation);
