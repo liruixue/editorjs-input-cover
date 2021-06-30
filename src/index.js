@@ -28,7 +28,7 @@ export default class InlineImage {
    */
   static get toolbox() {
     return {
-      title: 'Image',
+      title: '书籍封面',
       icon: toolboxIcon,
     };
   }
