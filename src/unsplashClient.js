@@ -41,9 +41,9 @@ export default class UnsplashClient {
     return {
       url: image.coverImgURL,
       thumb: image.thumbImgURL,
-      downloadLocation: image.coverImgURL,
       title: image.galleryTitle,
       fullTitle: image.bookTitle,
+      captionInfo: image.captionInfo,
     };
   }
 

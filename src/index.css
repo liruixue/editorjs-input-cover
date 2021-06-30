@@ -16,21 +16,12 @@
   vertical-align: bottom;
 }
 
-.inline-image__caption[contentEditable=true][data-placeholder]:empty::before {
-  position: absolute;
+.inline-image__caption{
   content: attr(data-placeholder);
   color: #707684;
-  font-weight: normal;
-  opacity: 0;
+  outline: none;
+  padding: .9em 0;
  }
-
-.inline-image__caption[contentEditable=true][data-placeholder]:empty::before {
-  opacity: 1;
-}
-
-.inline-image__caption[contentEditable=true][data-placeholder]:empty:focus::before {
-  opacity: 0;
-}
 
 .inline-image__picture--withBackground {
   background: #eff2f5;
@@ -149,4 +140,12 @@
 
 .scroll {
   overflow-y: scroll;
+}
+
+.ce-header {
+  padding: 1em 0;
+  margin: 0;
+  margin-bottom: -0.9em;
+  line-height: 1.5em;
+  outline: none;
 }

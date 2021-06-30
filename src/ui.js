@@ -34,6 +34,7 @@ export default class Ui {
       loading: this.api.styles.loader,
       input: this.api.styles.input,
       wrapper: 'inline-image',
+      headerClass: 'ce-header',
       imageHolder: 'inline-image__picture',
       caption: 'inline-image__caption',
     };
@@ -77,6 +78,7 @@ export default class Ui {
       image: null,
       caption: null,
       credits: null,
+      header: null,
     };
   }
 
@@ -87,22 +89,27 @@ export default class Ui {
    * @returns {HTMLDivElement}
    */
   render(data) {
+    console.log('this in the render data');
+    console.log(data);
     const wrapper = make('div', [this.CSS.baseClass, this.CSS.wrapper]);
     const loader = make('div', this.CSS.loading);
+    // 有图片链接的情况下，则直接显示可以被加载的图片信息data.unsplash.fullTitle
+    const headerEle = make('h3', this.CSS.headerClass, {
+      innerHTML: '',
+    });
+    const caption = make('div', [this.CSS.caption], {
+      contentEditable: false,
+      innerHTML: data.caption || '',
+    });
     const image = make('img', '', {
       onload: () => this.onImageLoad(),
       onerror: () => this.onImageLoadError(),
     });
-    const caption = make('div', [this.CSS.input, this.CSS.caption], {
-      contentEditable: !this.readOnly,
-      innerHTML: data.caption || '',
-    });
     this.nodes.imageHolder = make('div', this.CSS.imageHolder);
 
-    caption.dataset.placeholder = 'Enter a caption';
+    caption.dataset.placeholder = '选择书籍图片后自动生成该书籍相关信息';
 
     if (data.url) {
-      // 有图片链接的情况下，则直接显示可以被加载的图片信息.
       wrapper.appendChild(loader);
       image.src = data.url;
     } else {
@@ -116,6 +123,7 @@ export default class Ui {
     this.nodes.loader = loader;
     this.nodes.image = image;
     this.nodes.caption = caption;
+    this.nodes.header = headerEle;
 
     this.applySettings(data);
 
@@ -130,9 +138,12 @@ export default class Ui {
    * @returns {void}
    */
   onImageLoad() {
+    console.log('current on imageLoad data');
+    console.log(this.nodes);
+    this.nodes.wrapper.appendChild(this.nodes.header);
+    this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.imageHolder.prepend(this.nodes.image);
     this.nodes.wrapper.appendChild(this.nodes.imageHolder);
-    this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.loader.remove();
   }
 

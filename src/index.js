@@ -193,13 +193,19 @@ export default class InlineImage {
    */
   set data(data) {
     this._data = { ...this.data, ...data };
-
+    console.log('the data will updated in index.js');
+    console.log(this._data);
+    console.log(this.data);
     if (this.ui.nodes.image) {
       this.ui.nodes.image.src = this.data.url;
     }
 
     if (this.ui.nodes.caption) {
-      this.ui.nodes.caption.innerHTML = this.data.caption;
+      this.ui.nodes.caption.innerHTML = this.data.captionInfo;
+    }
+
+    if (this.ui.nodes.header) {
+      this.ui.nodes.header.innerHTML = this.data.fullTitle;
     }
   }
 

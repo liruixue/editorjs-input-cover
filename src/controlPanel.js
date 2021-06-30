@@ -169,7 +169,7 @@ export default class ControlPanel {
       oninput: () => this.searchInputHandler(),
     });
 
-    searchInput.dataset.placeholder = 'Search for an image...';
+    searchInput.dataset.placeholder = '输入书名查找...';
 
     wrapper.appendChild(searchInput);
     wrapper.appendChild(imageGallery);
@@ -271,15 +271,13 @@ export default class ControlPanel {
    * @returns {void}
    */
   downloadUnsplashImage({
-    url, title, fullTitle, downloadLocation,
+    url, title, fullTitle,captionInfo,
   }) {
     this.onSelectImage({
       url,
-      unsplash: {
-        title,
-        fullTitle,
-      },
+      title,
+      fullTitle,
+      captionInfo,
     });
-    this.unsplashClient.downloadImage(downloadLocation);
   }
 }
