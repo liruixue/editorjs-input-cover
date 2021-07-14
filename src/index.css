@@ -16,6 +16,11 @@
   vertical-align: bottom;
 }
 
+
+inline-image__picture{
+  padding: .9em 0;
+}
+
 .inline-image__caption{
   content: attr(data-placeholder);
   color: #707684;

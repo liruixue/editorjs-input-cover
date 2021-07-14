@@ -10,11 +10,9 @@ import toolboxIcon from '../assets/toolboxIcon.svg';
  * @typedef {object} InlineImageData
  * @description Tool's input and output data format
  * @property {string} url — image URL
- * @property {string} caption — image caption
  * @property {boolean} withBorder - should image be rendered with border
  * @property {boolean} withBackground - should image be rendered with background
  * @property {boolean} stretched - should image be stretched to full width of container
- * @property {object} unsplash - Unsplash image information
  *  - title: Unsplash image title name
  *  - fullTitle: title profile link
  */
@@ -58,12 +56,14 @@ export default class InlineImage {
     });
 
     this.data = {
+      fullTitle: data.fullTitle || '',
+      title: data.title || '',
+      captionInfo: data.captionInfo || '',
+      bookId: data.bookId || '',
       url: data.url || '',
-      caption: data.caption || '',
       withBorder: data.withBorder !== undefined ? data.withBorder : false,
       withBackground: data.withBackground !== undefined ? data.withBackground : false,
       stretched: data.stretched !== undefined ? data.stretched : false,
-      unsplash: data.unsplash,
     };
   }
 
@@ -82,10 +82,6 @@ export default class InlineImage {
    * @returns {InlineImageData}
    */
   save() {
-    const { caption } = this.ui.nodes;
-
-    this.data.caption = caption.innerHTML;
-
     return this.data;
   }
 
@@ -112,8 +108,9 @@ export default class InlineImage {
       withBorder: {},
       withBackground: {},
       stretched: {},
-      caption: {
+      captionInfo: {
         br: true,
+        code: true,
       },
     };
   }

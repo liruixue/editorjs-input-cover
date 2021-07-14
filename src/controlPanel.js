@@ -271,9 +271,10 @@ export default class ControlPanel {
    * @returns {void}
    */
   downloadUnsplashImage({
-    url, title, fullTitle,captionInfo,
+    bookId, url, title, fullTitle, captionInfo,
   }) {
     this.onSelectImage({
+      bookId,
       url,
       title,
       fullTitle,

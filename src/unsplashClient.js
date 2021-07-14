@@ -39,6 +39,7 @@ export default class UnsplashClient {
    */
   buildImageObject(image) {
     return {
+      bookId: image.bookId,
       url: image.coverImgURL,
       thumb: image.thumbImgURL,
       title: image.galleryTitle,
