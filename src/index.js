@@ -192,7 +192,6 @@ export default class InlineImage {
     this._data = { ...this.data, ...data };
     console.log('the data will updated in index.js');
     console.log(this._data);
-    console.log(this.data);
     if (this.ui.nodes.image) {
       this.ui.nodes.image.src = this.data.url;
     }
