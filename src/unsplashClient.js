@@ -5,7 +5,7 @@ import axios from 'axios';
  */
 export default class UnsplashClient {
   constructor(config) {
-    this.apiUrl = config && config.apiUrl ? config.apiUrl : 'http://api.chartsup.com/api/book';
+    this.apiUrl = config && config.apiUrl ? config.apiUrl : '';
     this.clientId = config && config.clientId ? config.clientId : '';
     this.perPage = config && config.maxResults ? config.maxResults : 30;
   }
