@@ -223,8 +223,6 @@ export default class ControlPanel {
    */
   appendImagesToGallery(results) {
     this.nodes.imageGallery.innerHTML = '';
-    console.log('the gallery results content');
-    console.log(results);
     if (results && results.length) {
       this.nodes.unsplashPanel.classList.add(this.cssClasses.scroll);
       results.forEach((image) => {

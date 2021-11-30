@@ -24,7 +24,12 @@ export default class UnsplashClient {
       },
     })
       .then((response) => {
-        const results = response.data;
+        console.log('the book searchImg response=');
+        console.log(response);
+        let results = response.data;
+        if (results.code === 200) {
+          results = response.data.data;
+        }
         return callback(results.map((image) => this.buildImageObject(image)));
       })
       .catch(() => callback([]));
