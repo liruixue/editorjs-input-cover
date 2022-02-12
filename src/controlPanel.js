@@ -230,7 +230,7 @@ export default class ControlPanel {
       });
     } else {
       const noResults = make('div', this.cssClasses.noResults, {
-        innerHTML: 'No images found',
+        innerHTML: '书籍库没有匹配的条目',
       });
       this.nodes.imageGallery.appendChild(noResults);
       this.nodes.unsplashPanel.classList.remove(this.cssClasses.scroll);
