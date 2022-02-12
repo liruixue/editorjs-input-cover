@@ -21,11 +21,15 @@ inline-image__picture{
   padding: .9em 0;
 }
 
-.inline-image__caption{
+.inline-image__caption:before{
   content: attr(data-placeholder);
   color: #707684;
   outline: none;
   padding: .9em 0;
+ }
+
+ .inline-image__caption:focus{
+  content: none
  }
 
 .inline-image__picture--withBackground {
