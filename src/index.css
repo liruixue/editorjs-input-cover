@@ -33,7 +33,6 @@ inline-image__picture{
  }
 
 .inline-image__picture--withBackground {
-  background: #eff2f5;
   padding: 10px;
   text-align: center;
 }

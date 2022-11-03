@@ -92,20 +92,20 @@ export default class Ui {
     const wrapper = make('div', [this.CSS.baseClass, this.CSS.wrapper]);
     const loader = make('div', this.CSS.loading);
     // 有图片链接的情况下，则直接显示可以被加载的图片信息data.unsplash.fullTitle
-    const headerEle = make('h3', this.CSS.headerClass, {
-      innerHTML: data.fullTitle || '',
-    });
-    const caption = make('div', [this.CSS.caption], {
-      contentEditable: false,
-      innerHTML: data.captionInfo || '',
-    });
+    // const headerEle = make('h3', this.CSS.headerClass, {
+    //   innerHTML: data.fullTitle || '',
+    // });
+    // const caption = make('div', [this.CSS.caption], {
+    //   contentEditable: false,
+    //   innerHTML: data.captionInfo || '',
+    // });
     const image = make('img', '', {
       onload: () => this.onImageLoad(),
       onerror: () => this.onImageLoadError(),
     });
     this.nodes.imageHolder = make('div', this.CSS.imageHolder);
 
-    caption.dataset.placeholder = '选择书籍图片后自动生成该书籍相关信息';
+    // caption.dataset.placeholder = '选择书籍图片后自动生成该书籍相关信息';
 
     if (data.url) {
       wrapper.appendChild(loader);
@@ -120,8 +120,8 @@ export default class Ui {
     this.nodes.wrapper = wrapper;
     this.nodes.loader = loader;
     this.nodes.image = image;
-    this.nodes.caption = caption;
-    this.nodes.header = headerEle;
+    // this.nodes.caption = caption;
+    // this.nodes.header = headerEle;
 
     this.applySettings(data);
     if (data.url) {
@@ -139,8 +139,8 @@ export default class Ui {
    * @returns {void}
    */
   onImageLoad() {
-    this.nodes.wrapper.appendChild(this.nodes.header);
-    this.nodes.wrapper.appendChild(this.nodes.caption);
+    // this.nodes.wrapper.appendChild(this.nodes.header);
+    // this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.imageHolder.prepend(this.nodes.image);
     this.nodes.wrapper.appendChild(this.nodes.imageHolder);
     this.nodes.loader.remove();
